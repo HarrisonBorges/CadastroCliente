@@ -3,11 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao;
+package data;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import model.Cliente;
 
 /**
  *
@@ -15,40 +14,40 @@ import model.Cliente;
  */
 public class ClienteDAO {
     
-    private Collection<Cliente> clientes;
+    private Collection<ClienteData> clientes;
 
     
     public ClienteDAO() {
         if(clientes == null){
-            this.clientes = new ArrayList<Cliente>();
+            this.clientes = new ArrayList<ClienteData>();
         }
     }
 
-    public Collection<Cliente> getClientes() {
+    public Collection<ClienteData> getClientes() {
         return clientes;
     }
 
-    public void setClientes(Collection<Cliente> clientes) {
+    public void setClientes(Collection<ClienteData> clientes) {
         this.clientes = clientes;
     }
    
-    public void criar(Cliente cliente){
+    public void criar(ClienteData cliente){
         clientes.add(cliente);
     }
     
-    public void alterar(Cliente cliente, int id){
+    public void alterar(ClienteData cliente, int id){
         
     }
     
-    public void excluir(Cliente cliente, int id){
-        clientes.remove()
+    public void excluir(ClienteData cliente, int id){
+        f
     }
     
-    public Cliente ler(int id){
+    public ClienteData ler(int id){
         
     }
     
-    public Collection<Cliente> ler(){
+    public Collection<ClienteData> ler(){
         
     }
 }
