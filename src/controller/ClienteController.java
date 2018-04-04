@@ -1,5 +1,7 @@
 package controller;
 
+import data.ClienteDAO;
+import data.ClienteData;
 import model.Cliente;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -7,7 +9,8 @@ import java.util.Collection;
 public class ClienteController {
 
     private Collection<Cliente> clientes = new ArrayList<>();
-
+    private ClienteDAO clienteDao = new ClienteDAO();
+    
     public Collection<Cliente> getClientes() {
         return clientes;
     }
@@ -17,8 +20,14 @@ public class ClienteController {
     }
 
     public void manter(Cliente cliente) throws Exception {
+        ClienteData clienteData = new ClienteData();
         if (!verificarNome(cliente.getNome())) {
-            clientes.add(cliente);
+            clienteData.setNome(cliente.getNome());
+            clienteData.setLimiteCredito(cliente.getLimiteCredito());
+            clienteData.setPais(cliente.getPais());
+            clienteData.setTelefone(cliente.getTelefone());
+           // clientes.add(cliente);
+            clienteDao.criar(clienteData);
         } else {
             throw new Exception("Já existe um Cliente com este nome");
         }
@@ -36,4 +45,5 @@ public class ClienteController {
         return existe;
     }
 
+    
 }

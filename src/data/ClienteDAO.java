@@ -32,22 +32,31 @@ public class ClienteDAO {
     }
    
     public void criar(ClienteData cliente){
+        int valorId = 0;
+        for(ClienteData cd : clientes){
+            if(cd.getId() > valorId){
+                valorId = cd.getId();
+            }
+        }
+        cliente.setId(++valorId);
         clientes.add(cliente);
     }
     
     public void alterar(ClienteData cliente, int id){
-        
+        excluir(cliente, id);
+        criar(cliente);
     }
     
     public void excluir(ClienteData cliente, int id){
-        f
+        clientes.remove(cliente);
     }
     
     public ClienteData ler(int id){
-        
+        return null;
     }
     
     public Collection<ClienteData> ler(){
-        
+        return null;
     }
+    
 }
