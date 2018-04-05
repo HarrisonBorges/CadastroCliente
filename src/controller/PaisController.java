@@ -1,5 +1,7 @@
 package controller;
 
+import data.PaisDAO;
+import data.PaisData;
 import model.Pais;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -7,7 +9,9 @@ import java.util.Collection;
 public class PaisController {
 
     private Collection<Pais> pais = new ArrayList<>();
-
+    private PaisDAO paisDao = new PaisDAO();
+    private PaisData paisData = new PaisData();
+    
     public Collection<Pais> getPais() {
         return pais;
     }
@@ -18,7 +22,12 @@ public class PaisController {
 
     public void manter(Pais p) throws Exception {
         if (!verificarNome(p.getNomePais())) {
-            pais.add(p);
+            paisData.setNomePais(p.getNomePais());
+            paisData.setSigla(p.getSigla());
+            paisData.setTelefoneQtdeDigitos(p.getTelefoneQtdeDigitos());
+            
+            paisDao.criar(paisData);
+            //pais.add(p);
         } else {
             throw new Exception("Já existe um País com este nome!");
         }
@@ -37,7 +46,7 @@ public class PaisController {
     public boolean verificarNome(String nome) {
         boolean existe = false;
 
-        for (Pais p : pais) {
+        for (PaisData p : paisDao.getPaises()) {
             if (p.getNomePais().equalsIgnoreCase(nome)) {
                 existe = true;
             }
