@@ -134,6 +134,7 @@ public class PaisView extends javax.swing.JFrame {
         String nomePais = jtxtNome.getText();
         String sigla = jTxtSigla.getText();
         int telefoneDigitos = Integer.parseInt(jTxtQtdeDigitosTel.getText());
+     // colocar valida;'ao de quantidade de digitoss   
 
         try {
             Pais p = new Pais(nomePais, sigla, telefoneDigitos);

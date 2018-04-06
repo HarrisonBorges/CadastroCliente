@@ -18,8 +18,8 @@ public class ConexaoBD {
     public ResultSet rs; // Armazena o resultado da pesquisa
     private String driver = "org.postgresql.Driver"; // Identifica o nosso serviço
     private String caminho = "jdbc:postgresql://localhost:5432/bdarquitetura"; // Qual é o caminho que está alocado o bd
-    private String usuario = "root"; // Usuário do bd
-    private String senha = ""; // Senha do BD
+    private String usuario = "postgres"; // Usuário do bd
+    private String senha = "postgres"; // Senha do BD
     public Connection con; // Fazer conexão com o BD
     
     public void conexao(){ // Método para realizar a Conexão com o BD

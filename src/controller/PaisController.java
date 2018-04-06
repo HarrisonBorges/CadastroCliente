@@ -13,7 +13,10 @@ public class PaisController {
     private PaisData paisData = new PaisData();
     
     public Collection<Pais> getPais() {
-        return pais;
+        for(PaisData p : paisDao.ler() ){
+           }
+    
+        return null;
     }
 
     public void setPais(Collection<Pais> pais) {
