@@ -24,7 +24,7 @@ public class ClienteController {
         if (!verificarNome(cliente.getNome())) {
             clienteData.setNome(cliente.getNome());
             clienteData.setLimiteCredito(cliente.getLimiteCredito());
-            clienteData.setPais(cliente.getPais());
+           // clienteData.setPais(cliente.getPais());
             clienteData.setTelefone(cliente.getTelefone());
            // clientes.add(cliente);
             clienteDao.criar(clienteData);

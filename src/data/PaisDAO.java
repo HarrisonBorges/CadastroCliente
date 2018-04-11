@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package data;
 
 import java.sql.PreparedStatement;
@@ -11,10 +6,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Harrison
- */
 public class PaisDAO {
     private Collection<PaisData> paises;
 
@@ -100,10 +91,31 @@ public class PaisDAO {
             cp.setId(conex.rs.getInt("id")); // Exibe o resultado da pesquisa no campo Edit
             cp.setNomePais(conex.rs.getString("nomePais"));  // Exibe o resultado da pesquisa no campo Edit
             cp.setSigla(conex.rs.getString("sigla"));  // Exibe o resultado da pesquisa no campo Edit
-            cp.setTelefoneQtdeDigitos(conex.rs.getInt("setTelefoneQtdeDigitos"));  // Exibe o resultado da pesquisa no campo Edit
+            cp.setTelefoneQtdeDigitos(conex.rs.getInt("telefoneQtdeDigitos"));  // Exibe o resultado da pesquisa no campo Edit
             
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao excluir o Pais: " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro ao ler o Pais: " + ex.getMessage());
+        }
+        
+        conex.desconecta(); // Desconecta conexão
+        return cp;
+  
+    }
+    
+    public PaisData ler(String nomePais){
+              conex.conexao(); // Abri as conexão
+        conex.executaSql("select * from pais where nomePais = '" + nomePais + "'");
+        PaisData cp = new PaisData();
+        
+        try {
+            conex.rs.first(); // Resultado da pesquisa do primeiro resultado do BD
+            cp.setId(conex.rs.getInt("id")); // Exibe o resultado da pesquisa no campo Edit
+            cp.setNomePais(conex.rs.getString("nomePais"));  // Exibe o resultado da pesquisa no campo Edit
+            cp.setSigla(conex.rs.getString("sigla"));  // Exibe o resultado da pesquisa no campo Edit
+            cp.setTelefoneQtdeDigitos(conex.rs.getInt("telefoneQtdeDigitos"));  // Exibe o resultado da pesquisa no campo Edit
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao encontrar o Pais com o nome (" + nomePais + "): " + ex.getMessage());
         }
         
         conex.desconecta(); // Desconecta conexão
@@ -113,22 +125,26 @@ public class PaisDAO {
     
     public Collection<PaisData> ler(){
               conex.conexao(); // Abri as conexão
-        conex.executaSql("select * from pais where id = " + 0);
-        PaisData cp = new PaisData();
+        conex.executaSql("select * from pais");
+        
+        Collection<PaisData> paises = new ArrayList<PaisData>();
         
         try {
-            conex.rs.first(); // Resultado da pesquisa do primeiro resultado do BD
-            cp.setId(conex.rs.getInt("id")); // Exibe o resultado da pesquisa no campo Edit
-            cp.setNomePais(conex.rs.getString("nomePais"));  // Exibe o resultado da pesquisa no campo Edit
-            cp.setSigla(conex.rs.getString("sigla"));  // Exibe o resultado da pesquisa no campo Edit
-            cp.setTelefoneQtdeDigitos(conex.rs.getInt("telefoneQtdeDigitos"));  // Exibe o resultado da pesquisa no campo Edit
-
-            
+            while(conex.rs.next()){
+                
+                PaisData cp = new PaisData();
+                cp.setId(conex.rs.getInt("id")); // Exibe o resultado da pesquisa no campo Edit
+                cp.setNomePais(conex.rs.getString("nomePais"));  // Exibe o resultado da pesquisa no campo Edit
+                cp.setSigla(conex.rs.getString("sigla"));  // Exibe o resultado da pesquisa no campo Edit
+                cp.setTelefoneQtdeDigitos(conex.rs.getInt("telefoneQtdeDigitos"));  // Exibe o resultado da pesquisa no campo Edit
+                
+                paises.add(cp);
+            }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao consultar o Pais: " + ex.getMessage());
         }
         
         conex.desconecta(); // Desconecta conexão
-        return null;
+        return paises;
     }
 }

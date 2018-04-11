@@ -39,7 +39,6 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jFTxtDataNasc" max="32767" attributes="0"/>
                           <Component id="jTxtTelefone" max="32767" attributes="0"/>
                           <Component id="jTxtNome" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
@@ -47,6 +46,7 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jBtnCadastrarPais" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="jFTxtDataNasc" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
@@ -139,13 +139,6 @@
         <Property name="text" type="java.lang.String" value="Data Nasc.:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JFormattedTextField" name="jFTxtDataNasc">
-      <Properties>
-        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-          <Format subtype="2" type="1"/>
-        </Property>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JButton" name="jBtnSalvarCliente">
       <Properties>
         <Property name="text" type="java.lang.String" value="Salvar"/>
@@ -161,6 +154,8 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnCadastrarPaisActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jFTxtDataNasc">
     </Component>
   </SubComponents>
 </Form>

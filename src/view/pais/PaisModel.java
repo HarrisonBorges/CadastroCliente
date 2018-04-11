@@ -1,19 +1,20 @@
-package data;
+package view.pais;
 
-public class PaisData {
-    private int id;
+public class PaisModel {
+
     private String nomePais;
     private String sigla;
     private int telefoneQtdeDigitos;
 
-    public int getId() {
-        return id;
+    public PaisModel() {
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public PaisModel(String nomePais, String sigla, int telefoneQtdeDigitos) {
+        this.nomePais = nomePais;
+        this.sigla = sigla;
+        this.telefoneQtdeDigitos = telefoneQtdeDigitos;
     }
-
+    
     public String getNomePais() {
         return nomePais;
     }
@@ -37,6 +38,10 @@ public class PaisData {
     public void setTelefoneQtdeDigitos(int telefoneQtdeDigitos) {
         this.telefoneQtdeDigitos = telefoneQtdeDigitos;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "PaisModel{" + "nomePais=" + nomePais + ", sigla=" + sigla + ", telefoneQtdeDigitos=" + telefoneQtdeDigitos + '}';
+    }
+
 }

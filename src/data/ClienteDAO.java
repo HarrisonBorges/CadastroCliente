@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package data;
 
 import java.sql.PreparedStatement;
@@ -38,13 +33,18 @@ public class ClienteDAO {
     public void criar(ClienteData cliente) {
         conex.conexao(); // Abrir Conexão BD
 
+        System.out.println(cliente.getDataNasc());
+        Date data = cliente.getDataNasc().getTime();
+        System.out.println(data);
+        java.sql.Date dataSQL = new java.sql.Date(data.getTime());
+        System.out.println(dataSQL);
         try {
             // Adicionar Try Catch
-            PreparedStatement pst = conex.con.prepareStatement("insert into cliente(nome,telefone,limiteCredito) values(?,?,?)");
+            PreparedStatement pst = conex.con.prepareStatement("insert into cliente(nome,telefone,limiteCredito,datanasc) values(?,?,?,?)");
             pst.setString(1, cliente.getNome());    // Enviar os Dados conforme o tipo especificado no BD
             pst.setString(2, cliente.getTelefone()); // Enviar os Dados conforme o tipo especificado no BD
             pst.setDouble(3, cliente.getLimiteCredito()); // Enviar os Dados conforme o tipo especificado no BD
-            //pst.setDate(4, (Date)cliente.getDataNasc()); // Enviar os Dados conforme o tipo especificado no BD
+            pst.setDate(4, dataSQL); // Enviar os Dados conforme o tipo especificado no BD
 
             pst.execute(); // Executa a transação quando estiver correto
             JOptionPane.showMessageDialog(null, "Dados inseridos com Sucesso!");
